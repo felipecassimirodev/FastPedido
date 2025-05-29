@@ -1,0 +1,13 @@
+C:\Repos\FastPedido\src\FastPedidoApi.Domain\bin\Debug\net8.0\FastPedidoApi.Domain.deps.json
+C:\Repos\FastPedido\src\FastPedidoApi.Domain\bin\Debug\net8.0\FastPedidoApi.Domain.dll
+C:\Repos\FastPedido\src\FastPedidoApi.Domain\bin\Debug\net8.0\FastPedidoApi.Domain.pdb
+C:\Repos\FastPedido\src\FastPedidoApi.Domain\obj\Debug\net8.0\FastPedidoApi.Domain.csproj.AssemblyReference.cache
+C:\Repos\FastPedido\src\FastPedidoApi.Domain\obj\Debug\net8.0\FastPedidoApi.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Repos\FastPedido\src\FastPedidoApi.Domain\obj\Debug\net8.0\FastPedidoApi.Domain.AssemblyInfoInputs.cache
+C:\Repos\FastPedido\src\FastPedidoApi.Domain\obj\Debug\net8.0\FastPedidoApi.Domain.AssemblyInfo.cs
+C:\Repos\FastPedido\src\FastPedidoApi.Domain\obj\Debug\net8.0\FastPedidoApi.Domain.csproj.CoreCompileInputs.cache
+C:\Repos\FastPedido\src\FastPedidoApi.Domain\obj\Debug\net8.0\FastPedidoApi.Domain.sourcelink.json
+C:\Repos\FastPedido\src\FastPedidoApi.Domain\obj\Debug\net8.0\FastPedidoApi.Domain.dll
+C:\Repos\FastPedido\src\FastPedidoApi.Domain\obj\Debug\net8.0\refint\FastPedidoApi.Domain.dll
+C:\Repos\FastPedido\src\FastPedidoApi.Domain\obj\Debug\net8.0\FastPedidoApi.Domain.pdb
+C:\Repos\FastPedido\src\FastPedidoApi.Domain\obj\Debug\net8.0\ref\FastPedidoApi.Domain.dll

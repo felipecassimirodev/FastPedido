@@ -1,0 +1,28 @@
+[
+  {
+    "ContainingType": "FastPedidoAPI.Controllers.PedidoController",
+    "Method": "Post",
+    "RelativePath": "Pedido",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "FastPedidoApi.Application.UseCases.CreatePedido.CreatePedidoCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FastPedidoAPI.Controllers.PedidoController",
+    "Method": "Get",
+    "RelativePath": "Pedido",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

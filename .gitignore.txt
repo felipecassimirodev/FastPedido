@@ -1,0 +1,43 @@
+.vs/
+
+bin/
+obj/
+
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+
+*.tlog
+*.tmp
+
+## Arquivos de pacotes NuGet
+*.nupkg
+*.snupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+
+
+.idea/
+
+## Arquivos do sistema
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+## Arquivos de publish
+publish/
+wwwroot/dist/
+dist/
+
+## Arquivos de cache
+*.vspscc
+*.vssscc
+*.cache
+*.dbmdl
+
+
