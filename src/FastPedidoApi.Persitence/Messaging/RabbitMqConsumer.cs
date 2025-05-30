@@ -23,9 +23,9 @@ namespace FastPedidoApi.Persitence.Messaging
         {
             _processarPedido = processarPedido;
 
-            _rabbitHost = configuration["RabbitMq:Host"] ?? "localhost";
-            _rabbitUser = configuration["RabbitMq:Username"] ?? "guest";
-            _rabbitPassword = configuration["RabbitMq:Password"] ?? "guest";
+            _rabbitHost = configuration["RabbitMqSettings:Host"] ?? "localhost";
+            _rabbitUser = configuration["RabbitMqSettings:Username"] ?? "guest";
+            _rabbitPassword = configuration["RabbitMqSettings:Password"] ?? "guest";
         }
 
         public void Start()
@@ -43,7 +43,7 @@ namespace FastPedidoApi.Persitence.Messaging
 
             var consumer = new EventingBasicConsumer(channel);
 
-            channel.BasicConsume("pedidos", false, consumer); // <- altere para false
+            channel.BasicConsume("pedidos", false, consumer); 
 
             consumer.Received += async (model, ea) =>
             {
@@ -61,7 +61,7 @@ namespace FastPedidoApi.Persitence.Messaging
                         var id = idElement.GetString();
                         if (!string.IsNullOrEmpty(id))
                         {
-                            await Task.Delay(60000);
+                            await Task.Delay(20000);
 
                             await _processarPedido.HandleAsync(id);
                             // ACK manual aqui!

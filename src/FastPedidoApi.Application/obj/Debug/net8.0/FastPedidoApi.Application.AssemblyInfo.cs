@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FastPedidoApi.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ea4e5b3f42310139ebf5c1578e8ab31e711f78ff")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b6b96a99a5973c9a2634c2a7b067c9508c57d79c")]
 [assembly: System.Reflection.AssemblyProductAttribute("FastPedidoApi.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FastPedidoApi.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

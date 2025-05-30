@@ -27,8 +27,9 @@ builder.Services.AddSingleton<IMongoClient>(sp =>
 builder.Services.AddScoped<IMongoDatabase>(sp =>
 {
     var client = sp.GetRequiredService<IMongoClient>();
-    var databaseName = Environment.GetEnvironmentVariable("MONGO__DATABASE")
-        ?? builder.Configuration["MongoDbSettings:Database"];
+    var configuration = sp.GetRequiredService<IConfiguration>();
+    var databaseName = configuration["MongoDbSettings:Database"];
+
     return client.GetDatabase(databaseName);
 });
 
