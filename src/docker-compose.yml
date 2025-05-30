@@ -35,10 +35,7 @@ services:
       mongo:
         condition: service_started
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:8080
       - MongoDbSettings__ConnectionString=mongodb://mongo:27017/
       - MongoDbSettings__Database=fastpedido
-      - RabbitMqSettings__Host=rabbitmq
-      - RabbitMqSettings__Username=guest
-      - RabbitMqSettings__Password=guest
