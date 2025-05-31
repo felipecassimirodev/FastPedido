@@ -38,7 +38,7 @@ API para cadastro e processamento de pedidos com integração ao RabbitMQ, utili
 
 Ao executar o comando abaixo o docker-compose subira o mongoDB, RabbitMQ e a API configurando suas conexões    
 ### bash ou cmd na pasta src
-    -docker-compose up --build
+    docker-compose up --build
 
 ### O Docker Compose irá iniciar os seguintes serviços:
     -MongoDB
@@ -51,7 +51,7 @@ Ao executar o comando abaixo o docker-compose subira o mongoDB, RabbitMQ e a API
 
 ## Gerar imagem do containe
  ### Execute o comando abaixo na pasta src
-    - docker build --no-cache -f FastPedidoAPI/Dockerfile -t api-pedido .
+     docker build --no-cache -f FastPedidoAPI/Dockerfile -t api-pedido .
 
 ## Como testar via Postman
 Você pode testar os endpoints da API FastPedido utilizando o Postman.
