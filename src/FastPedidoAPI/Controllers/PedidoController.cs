@@ -1,6 +1,4 @@
-﻿using FastPedidoAPI.Models;
-using FastPedidoAPI.Services;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Text;
 using System.Text.Json;
 using RabbitMQ.Client;
@@ -13,10 +11,8 @@ namespace FastPedidoAPI.Controllers
     [Route("[controller]")]
     public class PedidoController : ControllerBase
     {
-
         private readonly CreatePedidoHandler _handler;
         private readonly IPedidoRepository _repository;
-        private readonly MongoDBService _mongo;
 
         public PedidoController(CreatePedidoHandler handler, IPedidoRepository repository)
         {

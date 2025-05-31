@@ -3,7 +3,6 @@ using FastPedidoApi.Application.UseCases.ProcessPedido;
 using FastPedidoApi.Domain.Interfaces;
 using FastPedidoApi.Persitence.Data;
 using FastPedidoApi.Persitence.Messaging;
-using FastPedidoAPI.Services;
 using MongoDB.Driver;
 using RabbitMQ.Client;
 
@@ -23,7 +22,6 @@ builder.Services.AddSingleton<IMongoClient>(sp =>
     return new MongoClient(connectionString);
 });
 
-
 builder.Services.AddScoped<IMongoDatabase>(sp =>
 {
     var client = sp.GetRequiredService<IMongoClient>();
@@ -40,10 +38,6 @@ builder.Services.AddSingleton<IConnection>(sp =>
     return RabbitMqConnectionFactory.CreateConnection(configuration);
 });
 
-builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();
-builder.Services.AddScoped<IMessagePublisher, RabbitMqPublisher>();
-builder.Services.AddScoped<CreatePedidoHandler>();
-
 builder.Services.AddSingleton<IPedidoRepository, MongoPedidoRepository>(sp =>
 {
     var mongoClient = sp.GetRequiredService<IMongoClient>();
@@ -51,6 +45,8 @@ builder.Services.AddSingleton<IPedidoRepository, MongoPedidoRepository>(sp =>
     return new MongoPedidoRepository(database);
 });
 
+builder.Services.AddScoped<IMessagePublisher, RabbitMqPublisher>();
+builder.Services.AddScoped<CreatePedidoHandler>();
 builder.Services.AddSingleton<ProcessarPedido>();
 builder.Services.AddSingleton<RabbitMqConsumer>();
 builder.Services.AddHostedService<PedidoConsumerService>();
