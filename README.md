@@ -64,14 +64,19 @@ Headers:
 Content-Type: application/json
     Body (raw → JSON):
     {
-      "nomeCliente": "Felipe Cassimiro",
-      "descricao": "Teste 01",
-      "valor": 11.50
+        "nomeCliente": "Felipe Cassimiro",
+        "descricao": "Teste 01",
+        "valor": 10.50
     }
+
+![image](https://github.com/user-attachments/assets/22807c4c-5672-49d9-b1ca-9e0a2a4e228e)
 
 2. Listar todos os pedidos
 Método: GET
     - URL: `http://localhost:8000/pedidos`
+
+![image](https://github.com/user-attachments/assets/eddf83b7-0faa-4dcf-9c3f-3ae52b4e26fc)
+
 
 ## Como testar via curl
 Método: POST
@@ -80,4 +85,24 @@ curl -X POST http://localhost:8000/pedidos \
      -d '{ "nomeCliente": "Felipe Cassimiro", "descricao": "Teste 01" ,"valor": 11.50 }'
 
 Método: GET
-  curl http://localhost:5000/pedidos
+  curl http://localhost:8000/pedidos
+
+## 🧠 Diferenciais Implementados (Plus)
+✅ Criação de um servidor **Linux (VM)** na **Azure** para execução do projeto.
+
+✅ Instalação e configuração completa do ambiente na VM:
+- Docker
+- Docker Compose
+- Clonagem do repositório
+- Geração das imagens (API, MongoDB, RabbitMQ) via `docker-compose`
+
+✅ Exposição e liberação de portas no Azure:
+- Permite acesso externo à **API**
+- Permite acesso externo à interface do **RabbitMQ** (geralmente porta `15672`)
+
+
+![image](https://github.com/user-attachments/assets/f826a277-9281-46e0-9550-7fe271c176df)
+
+![image](https://github.com/user-attachments/assets/1aa9e70a-231a-4630-91c4-7def289e9c9a)
+
+  
