@@ -21,4 +21,10 @@
     <ProjectReference Include="..\FastPedidoApi.Persitence\FastPedidoApi.Persitence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+  	<None Update="appsettings.Docker.json">
+  		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+  	</None>
+  </ItemGroup>
+
 </Project>

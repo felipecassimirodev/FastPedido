@@ -8,27 +8,26 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-
-
 namespace FastPedidoApi.Persitence.Data
 {
- public class RabbitMqPublisher : IMessagePublisher
-{
-    private readonly IModel _channel;
-
-    public RabbitMqPublisher(IModel channel)
+    public class RabbitMqPublisher : IMessagePublisher
     {
-        _channel = channel;
+        private readonly IConnection _connection;
+
+        public RabbitMqPublisher(IConnection connection)
+        {
+            _connection = connection;
+        }
+
+        public Task PublishAsync(string queue, object message)
+        {
+            using var channel = _connection.CreateModel();
+            channel.QueueDeclare(queue, durable: false, exclusive: false, autoDelete: false);
+
+            var body = Encoding.UTF8.GetBytes(Newtonsoft.Json.JsonConvert.SerializeObject(message));
+            channel.BasicPublish("", queue, null, body);
+
+            return Task.CompletedTask;
+        }
     }
-
-    public Task PublishAsync(string queue, object message)
-    {
-        _channel.QueueDeclare(queue, durable: false, exclusive: false, autoDelete: false);
-        var body = Encoding.UTF8.GetBytes(Newtonsoft.Json.JsonConvert.SerializeObject(message));
-        _channel.BasicPublish("", queue, null, body);
-
-        return Task.CompletedTask;
-    }
-}
-
 }

@@ -61,3 +61,4 @@ C:\Repos\FastPedido\src\FastPedidoAPI\bin\Debug\net8.0\Microsoft.Extensions.Host
 C:\Repos\FastPedido\src\FastPedidoAPI\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Repos\FastPedido\src\FastPedidoAPI\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
 C:\Repos\FastPedido\src\FastPedidoAPI\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
+C:\Repos\FastPedido\src\FastPedidoAPI\bin\Debug\net8.0\appsettings.Docker.json

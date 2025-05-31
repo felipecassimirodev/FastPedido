@@ -16,6 +16,7 @@ namespace FastPedidoApi.Domain.Entities
         public string Descricao { get; set; }
 
         [BsonElement("valor")]
+        [BsonRepresentation(BsonType.Decimal128)]
         public decimal Valor { get; set; }
 
         [BsonElement("status")]

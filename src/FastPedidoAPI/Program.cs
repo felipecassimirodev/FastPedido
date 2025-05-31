@@ -27,8 +27,9 @@ builder.Services.AddSingleton<IMongoClient>(sp =>
 builder.Services.AddScoped<IMongoDatabase>(sp =>
 {
     var client = sp.GetRequiredService<IMongoClient>();
-    var databaseName = Environment.GetEnvironmentVariable("MONGO__DATABASE")
-        ?? builder.Configuration["MongoDbSettings:Database"];
+    var configuration = sp.GetRequiredService<IConfiguration>();
+    var databaseName = configuration["MongoDbSettings:Database"];
+
     return client.GetDatabase(databaseName);
 });
 
@@ -38,13 +39,6 @@ builder.Services.AddSingleton<IConnection>(sp =>
     var configuration = sp.GetRequiredService<IConfiguration>();
     return RabbitMqConnectionFactory.CreateConnection(configuration);
 });
-
-builder.Services.AddScoped<IModel>(sp =>
-{
-    var connection = sp.GetRequiredService<IConnection>();
-    return connection.CreateModel();
-});
-
 
 builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();
 builder.Services.AddScoped<IMessagePublisher, RabbitMqPublisher>();
@@ -63,7 +57,7 @@ builder.Services.AddHostedService<PedidoConsumerService>();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || app.Environment.EnvironmentName == "Docker")
 {
     app.UseSwagger();
     app.UseSwaggerUI();
