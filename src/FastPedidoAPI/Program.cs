@@ -40,13 +40,6 @@ builder.Services.AddSingleton<IConnection>(sp =>
     return RabbitMqConnectionFactory.CreateConnection(configuration);
 });
 
-builder.Services.AddScoped<IModel>(sp =>
-{
-    var connection = sp.GetRequiredService<IConnection>();
-    return connection.CreateModel();
-});
-
-
 builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();
 builder.Services.AddScoped<IMessagePublisher, RabbitMqPublisher>();
 builder.Services.AddScoped<CreatePedidoHandler>();

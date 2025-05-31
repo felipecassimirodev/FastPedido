@@ -14,44 +14,25 @@ namespace FastPedidoApi.Persitence.Messaging
 {
     public class RabbitMqConsumer
     {
+        private readonly IConnection _connection;
         private readonly ProcessarPedido _processarPedido;
-        private readonly string _rabbitHost;
-        private readonly string _rabbitUser;
-        private readonly string _rabbitPassword;
 
-        public RabbitMqConsumer(ProcessarPedido processarPedido, IConfiguration configuration)
+        public RabbitMqConsumer(IConnection connection, ProcessarPedido processarPedido)
         {
+            _connection = connection;
             _processarPedido = processarPedido;
-
-            _rabbitHost = configuration["RabbitMqSettings:Host"] ?? "localhost";
-            _rabbitUser = configuration["RabbitMqSettings:Username"] ?? "guest";
-            _rabbitPassword = configuration["RabbitMqSettings:Password"] ?? "guest";
         }
 
         public void Start()
         {
-            var factory = new ConnectionFactory()
-            {
-                HostName = _rabbitHost,
-                UserName = _rabbitUser,
-                Password = _rabbitPassword
-            };
-
-            var connection = factory.CreateConnection();
-            var channel = connection.CreateModel();
-            channel.QueueDeclare("pedidos", false, false, false, null);
+            var channel = _connection.CreateModel();
+            channel.QueueDeclare("pedidos", durable: false, exclusive: false, autoDelete: false, arguments: null);
 
             var consumer = new EventingBasicConsumer(channel);
-
-            channel.BasicConsume("pedidos", false, consumer); 
-
             consumer.Received += async (model, ea) =>
             {
-                Console.WriteLine("🟡 Evento de recebimento disparado");
-
                 var body = ea.Body.ToArray();
                 var message = Encoding.UTF8.GetString(body);
-                Console.WriteLine($"Mensagem recebida: {message}");
 
                 try
                 {
@@ -62,20 +43,20 @@ namespace FastPedidoApi.Persitence.Messaging
                         if (!string.IsNullOrEmpty(id))
                         {
                             await Task.Delay(20000);
-
                             await _processarPedido.HandleAsync(id);
-                            // ACK manual aqui!
-                            ((EventingBasicConsumer)model).Model.BasicAck(ea.DeliveryTag, false);
+                            channel.BasicAck(ea.DeliveryTag, false);
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Erro ao processar mensagem: {ex.Message}");
-                    // Pode usar BasicNack aqui se quiser reprocessar depois
+                    Console.WriteLine($"Erro: {ex.Message}");
+                    channel.BasicNack(ea.DeliveryTag, false, true);
                 }
             };
 
+            channel.BasicConsume("pedidos", false, consumer);
         }
     }
+
 }
